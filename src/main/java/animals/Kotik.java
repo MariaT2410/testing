@@ -56,7 +56,7 @@ public class Kotik {
 
 
     // Определение методов play (играть), sleep (спать), wash (умываться), walk (гулять), hunt (охотиться)
-    public boolean play(){
+    private boolean play(){
         if( satiety>0){
             System.out.println("Котик играет");
             // случайно определяем сколько единиц сытости ушло во время play()
@@ -68,7 +68,7 @@ public class Kotik {
             return false;
         }
     }
-    public boolean sleep(){
+    private boolean sleep(){
         if( satiety>0){
             System.out.println("Котик спит");
             // случайно определяем сколько единиц сытости ушло во время sleep()
@@ -81,7 +81,7 @@ public class Kotik {
         }
 
     }
-    public boolean wash(){
+    private boolean wash(){
         if( satiety>0){
             System.out.println("Котик умывается");
             // случайно определяем сколько единиц сытости ушло во время wash()
@@ -93,7 +93,7 @@ public class Kotik {
             return false;
         }
     }
-    public boolean walk(){
+    private boolean walk(){
         if( satiety>0){
             System.out.println("Котик гуляет");
             // случайно определяем сколько единиц сытости ушло во время walk()
@@ -112,7 +112,7 @@ public class Kotik {
         return count;
     }
 
-    public boolean hunt(){
+    private boolean hunt(){
         if( satiety>0){
             System.out.println("Котик охотится");
             // случайно определяем сколько единиц сытости ушло во время hunt()
@@ -126,11 +126,11 @@ public class Kotik {
     }
 
     // Перегрузка методов eat
-    public void eat(int satiety){
+    private void eat(int satiety){
         System.out.println("Кормим котика");
         this.satiety += satiety;
     }
-    public void eat(int satiety, String food){
+    private void eat(int satiety, String food){
         System.out.println("Кормим котика. Еда:" + food);
         this.satiety += satiety;
     }

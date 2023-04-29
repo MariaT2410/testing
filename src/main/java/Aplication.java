@@ -3,10 +3,10 @@ import animals.Kotik;
 public class Aplication {
     public static void main(String[] arg){
         System.out.println("Добро пожаловать в котоДОМ");
-        //создаём котика 1
+        //создаём котика через конструктор
         Kotik k = new Kotik("Зефирка", "мур-мяу", 0, 4900);
 
-        //создаём котика2
+        //создаём котика2 через пустой конструктор
         Kotik kotik2 = new Kotik();
         kotik2.setName("Печенька");
         kotik2.setVoice("ммррррр");
@@ -30,5 +30,6 @@ public class Aplication {
             System.out.println("Котики мяукают одинаково");
         }
         else System.out.println("Котики мяукают по-разному");
+
     }
 }
