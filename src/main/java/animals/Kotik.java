@@ -8,7 +8,7 @@ public class Kotik {
     private String food;
 
     private static int count = 0;
-    private static int METHODS = 5;
+    private static final int METHODS = 5;
 
     //Конструкторы
     public Kotik(String name, String voice, int satiety, int weight) {
@@ -57,53 +57,40 @@ public class Kotik {
 
     // Определение методов play (играть), sleep (спать), wash (умываться), walk (гулять), hunt (охотиться)
     private boolean play(){
-        if( satiety>0){
-            System.out.println("Котик играет");
+        if( this.satiety>0){
+            //System.out.println("Котик играет");
             // случайно определяем сколько единиц сытости ушло во время play()
             int randomSatiety = (int) (Math.random() * 10);
             this.satiety -=randomSatiety;
             return true;
-        } else {
-            eat((int) (Math.random() * 10));
-            return false;
-        }
+        } else {return false;}
     }
     private boolean sleep(){
-        if( satiety>0){
-            System.out.println("Котик спит");
+        if( this.satiety>0){
+            //System.out.println("Котик спит");
             // случайно определяем сколько единиц сытости ушло во время sleep()
             int randomSatiety = (int) (Math.random() * 10);
             this.satiety -=randomSatiety;
             return true;
-        } else {
-            eat((int) (Math.random() * 10));
-            return false;
-        }
-
+        } else {return false;}
     }
     private boolean wash(){
-        if( satiety>0){
-            System.out.println("Котик умывается");
+        if( this.satiety>0){
+            //System.out.println("Котик умывается");
             // случайно определяем сколько единиц сытости ушло во время wash()
             int randomSatiety = (int) (Math.random() * 10);
             this.satiety -=randomSatiety;
             return true;
-        } else {
-            eat((int) (Math.random() * 10));
-            return false;
-        }
+        } else {return false;}
     }
     private boolean walk(){
-        if( satiety>0){
-            System.out.println("Котик гуляет");
+        if( this.satiety>0){
+            //System.out.println("Котик гуляет");
             // случайно определяем сколько единиц сытости ушло во время walk()
             int randomSatiety = (int) (Math.random() * 10);
             this.satiety -=randomSatiety;
             return true;
-        } else {
-            eat((int) (Math.random() * 10));
-            return false;
-        }
+        } else {return false;}
     }
 
     //Для выведения количества итераций собзания объекта animals.Kotik
@@ -113,21 +100,18 @@ public class Kotik {
     }
 
     private boolean hunt(){
-        if( satiety>0){
-            System.out.println("Котик охотится");
+        if( this.satiety>0){
+            //System.out.println("Котик охотится");
             // случайно определяем сколько единиц сытости ушло во время hunt()
             int randomSatiety = (int) (Math.random() * 10);
             this.satiety -=randomSatiety;
             return true;
-        } else {
-            eat((int) (Math.random() * 10), "Мышка");
-            return false;
-        }
+        } else {return false;}
     }
 
     // Перегрузка методов eat
     private void eat(int satiety){
-        System.out.println("Кормим котика");
+        //System.out.println("Кормим котика");
         this.satiety += satiety;
     }
     private void eat(int satiety, String food){
@@ -139,33 +123,56 @@ public class Kotik {
         eat(satiety, food);
     }
 
-    public void liveAnotherDay(){
-
+    public String[] liveAnotherDay(){
+    String[] liveKotik = new String[24];
         System.out.println("Очень важные дела котика по имени "+this.name+" за весь день:");
         for (int i=0; i<24; i++){
             int a = (int) (Math.random() * METHODS) + 1;
             switch (a){
                 case 1:
-                    System.out.print(i+" - ");
-                    play();
-                    break;
+                    if(!play()) {
+                        this.eat((int) (Math.random() * 10));
+                        liveKotik[i] = "" + i + " - покормили голодного котика";
+                        break;
+                    }
+                    else {liveKotik[i] = ""+i+" - играть";
+                        break;
+                    }
+
                 case 2:
-                    System.out.print(i+" - " );
-                    sleep();
-                    break;
+                    if (!sleep()){
+                        eat((int) (Math.random() * 10));
+                        liveKotik[i] = ""+i+" - покормили голодного котика";
+
+                        break;
+                    }else {liveKotik[i] = ""+i+" - спит";
+                        break;}
+
                 case 3:
-                    System.out.print(i+" - " );
-                    wash();
-                    break;
+                    if (!wash()){
+                        eat((int) (Math.random() * 10));
+                        liveKotik[i] = ""+i+" - покормили голодного котика";
+                        break;
+                    }else {liveKotik[i] = ""+i+" - умывается ";
+                        break;}
                 case 4:
-                    System.out.print(i+" - " );
-                    walk();
-                    break;
+                    if (!walk()){
+                        eat((int) (Math.random() * 10));
+                        liveKotik[i] = ""+i+" - покормили голодного котика";
+                        break;
+                    }else {liveKotik[i] = ""+i+" - гуляет";
+                        break;}
+
                 case 5:
-                    System.out.print(i+" - " );
-                    hunt();
-                    break;
+                    if (!hunt()){
+                        eat((int) (Math.random() * 10), "Мышка");
+                        liveKotik[i] = ""+i+" - покормили голодного котика";
+                        break;
+                    }else{
+                        liveKotik[i] = ""+i+" - охотится";
+                        break;}
             }
         }
+        return liveKotik;
     }
 }
