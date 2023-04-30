@@ -1,6 +1,6 @@
 import animals.Kotik;
 
-public class Aplication {
+public class Application {
     public static void main(String[] arg){
         System.out.println("Добро пожаловать в котоДОМ");
         //создаём котика через конструктор
