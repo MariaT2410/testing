@@ -1,12 +1,9 @@
 package animals;
 
 import food.Food;
-import food.Grass;
-import food.Meat;
 
 public class Rabbit extends Herbivore implements Run, Swim, Voice {
     private String name;
-    private int satiety;
 
 
     public Rabbit(String name, int satiety) {
@@ -51,10 +48,9 @@ public class Rabbit extends Herbivore implements Run, Swim, Voice {
     }
 
     @Override
-    public boolean eat(Food food) {
-        if(super.eat(food)){
-            this.satiety +=food.getEnargy();
-            return true;
-        }else return false;
+    public void eat(Food food) {
+        super.eat(food);
+        this.satiety +=food.getEnergy();
+
     }
 }

@@ -1,12 +1,10 @@
 package animals;
 
 import food.Food;
-import food.Grass;
-import food.Meat;
 
 public class Bison extends Herbivore implements Run, Swim, Voice {
     private String name;
-    private int satiety;
+
 
     public Bison(String name, int satiety) {
         this.name = name;
@@ -42,10 +40,9 @@ public class Bison extends Herbivore implements Run, Swim, Voice {
     }
 
     @Override
-    public boolean eat(Food food) {
-        if(super.eat(food)){
-            this.satiety +=food.getEnargy();
-            return true;
-        }else return false;
+    public void eat(Food food) {
+        super.eat(food);
+        this.satiety +=food.getEnergy();
+
     }
 }

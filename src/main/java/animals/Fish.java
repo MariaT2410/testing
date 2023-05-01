@@ -1,11 +1,10 @@
 package animals;
 
 import food.Food;
-import food.Grass;
 
 public class Fish extends Herbivore implements Swim{
     private String name;
-    private int satiety;
+
 
     public Fish() {
     }
@@ -30,11 +29,10 @@ public class Fish extends Herbivore implements Swim{
     }
 
     @Override
-    public boolean eat(Food food) {
-        if(super.eat(food)){
-            this.satiety +=food.getEnargy();
-            return true;
-        }else return false;
+    public void eat(Food food) {
+        super.eat(food);
+        this.satiety +=food.getEnergy();
+
     }
 
 

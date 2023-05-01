@@ -2,12 +2,7 @@ package food;
 
 public abstract class Food {
     public String name;
-
-    public Food(String name) {
-        this.name = name;
-    }
-
-    public abstract int getEnargy();
+    public abstract int getEnergy();
 
 
 }

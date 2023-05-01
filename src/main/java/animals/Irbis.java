@@ -1,12 +1,10 @@
 package animals;
 
 import food.Food;
-import food.Grass;
-import food.Meat;
 
 public class Irbis extends Carnivorous implements Run, Voice, Swim{
     private String name;
-    private int satiety;
+
 
     public Irbis(String name, int satiety) {
         this.name = name;
@@ -51,10 +49,11 @@ public class Irbis extends Carnivorous implements Run, Voice, Swim{
     }
 
     @Override
-    public boolean eat(Food food) {
-        if(super.eat(food)){
-            this.satiety +=food.getEnargy();
-            return true;
-        }else return false;
+    public void eat(Food food) {
+        super.eat(food);
+        this.satiety +=food.getEnergy();
+
     }
+
+
 }

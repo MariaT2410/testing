@@ -1,12 +1,11 @@
 package animals;
 
 import food.Food;
-import food.Meat;
 
 public class Kotik extends Carnivorous implements Run,Voice {
     private String name;
     private String voice;
-    private int satiety; // сытость [0;10]
+    //private int satiety; // сытость [0;10]
     private int weight;
     private String food;
 
@@ -17,7 +16,7 @@ public class Kotik extends Carnivorous implements Run,Voice {
     public Kotik(String name, String voice, int satiety, int weight) {
         this.name = name;
         this.voice = voice;
-        this.satiety = satiety;
+        //this.satiety = satiety;
         this.weight = weight;
         count++;
     }
@@ -39,12 +38,16 @@ public class Kotik extends Carnivorous implements Run,Voice {
     public void setVoice(String voice) {
         this.voice = voice;
     }
-    public int getSatiety() {
+    /*public int getSatiety() {
         return satiety;
     }
+
+
     public void setSatiety(int satiety) {
         this.satiety = satiety;
     }
+
+     */
     public int getWeight() {
         return weight;
     }
@@ -135,11 +138,11 @@ public class Kotik extends Carnivorous implements Run,Voice {
         this.satiety += satiety;
     }
     @Override
-    public boolean eat(Food food){
-        if(super.eat(food)){
-            this.satiety +=food.getEnargy();
-            return true;
-        }else return false;
+    public void eat(Food food){
+        super.eat(food);
+        this.satiety +=food.getEnergy();
+
+
     }
 
 
