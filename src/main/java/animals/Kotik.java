@@ -1,6 +1,9 @@
 package animals;
 
-public class Kotik {
+import food.Food;
+import food.Meat;
+
+public class Kotik extends Carnivorous implements Run,Voice {
     private String name;
     private String voice;
     private int satiety; // сытость [0;10]
@@ -29,8 +32,9 @@ public class Kotik {
     public void setName(String name) {
         this.name = name;
     }
+    @Override
     public String getVoice() {
-        return voice;
+        return "Мрррррр";
     }
     public void setVoice(String voice) {
         this.voice = voice;
@@ -120,7 +124,7 @@ public class Kotik {
             this.satiety -=randomSatiety;
             return true;
         } else {
-            eat((int) (Math.random() * 10), "Мышка");
+            eat((int) (Math.random() * 10));
             return false;
         }
     }
@@ -130,14 +134,14 @@ public class Kotik {
         System.out.println("Кормим котика");
         this.satiety += satiety;
     }
-    public void eat(int satiety, String food){
-        System.out.println("Кормим котика. Еда:" + food);
-        this.satiety += satiety;
+    @Override
+    public boolean eat(Food food){
+        if(super.eat(food)){
+            this.satiety +=food.getEnargy();
+            return true;
+        }else return false;
     }
-    public void eat(){
-        System.out.print("Вызываем метод кормления food");
-        eat(satiety, food);
-    }
+
 
     public void liveAnotherDay(){
 
@@ -167,5 +171,10 @@ public class Kotik {
                     break;
             }
         }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Кот решил удрать");
     }
 }
