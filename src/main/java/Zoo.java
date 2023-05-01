@@ -9,13 +9,19 @@ import java.awt.font.GlyphJustificationInfo;
 public class Zoo {
     public static void main(String[] arg){
 
+        Food f = new Grass("Трава");
+        Food f2 = new Meat("убитый кролик");
         //создаём котика 1
         Kotik k = new Kotik("Зефирка", "мур-мяу", 5, 4900);
         //System.out.println(k.getSatiety());
+        k.eat(f);
+        System.out.println(k.getSatiety());
+        k.eat(f2);
+        System.out.println(k.getSatiety());
 
 
-        Food f = new Grass("Трава");
-        Food f2 = new Meat("убитый кролик");
+
+
 
         Bison b = new Bison("Гор", 4);
         b.eat(f2);
