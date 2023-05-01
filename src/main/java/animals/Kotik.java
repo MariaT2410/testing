@@ -1,6 +1,7 @@
 package animals;
 
 import food.Food;
+import food.Meat;
 
 public class Kotik extends Carnivorous implements Run,Voice {
     private String name;
@@ -139,8 +140,12 @@ public class Kotik extends Carnivorous implements Run,Voice {
     }
     @Override
     public void eat(Food food){
-        super.eat(food);
-        this.satiety +=food.getEnergy();
+        if(!(food instanceof Meat)){
+            System.out.println("Еда не является мясом");
+        }else {
+
+            this.satiety += food.getEnergy();
+        }
 
 
     }

@@ -1,6 +1,8 @@
 package animals;
 
 import food.Food;
+import food.Grass;
+import food.Meat;
 
 public class Fish extends Herbivore implements Swim{
     private String name;
@@ -30,8 +32,11 @@ public class Fish extends Herbivore implements Swim{
 
     @Override
     public void eat(Food food) {
-        super.eat(food);
-        this.satiety +=food.getEnergy();
+        if(!(food instanceof Grass)){
+            System.out.println("Еда не является травой");
+        }else {
+            this.satiety += food.getEnergy();
+        }
 
     }
 

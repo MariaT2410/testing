@@ -18,7 +18,9 @@ public class Zoo {
         Food f2 = new Meat("убитый кролик");
 
         Bison b = new Bison("Гор", 4);
-        b.eat(f);
+        b.eat(f2);
+        b.getSatiety();
+
         System.out.println(b.getSatiety());
         b.getVoice();
         Irbis ir = new Irbis("Ирбис", 6);

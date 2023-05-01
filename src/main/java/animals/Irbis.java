@@ -1,6 +1,7 @@
 package animals;
 
 import food.Food;
+import food.Meat;
 
 public class Irbis extends Carnivorous implements Run, Voice, Swim{
     private String name;
@@ -50,8 +51,12 @@ public class Irbis extends Carnivorous implements Run, Voice, Swim{
 
     @Override
     public void eat(Food food) {
-        super.eat(food);
-        this.satiety +=food.getEnergy();
+        if(!(food instanceof Meat)){
+            System.out.println("Еда не является мясом");
+        }else {
+
+            this.satiety += food.getEnergy();
+        }
 
     }
 

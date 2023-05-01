@@ -1,6 +1,8 @@
 package animals;
 
 import food.Food;
+import food.Grass;
+import food.Meat;
 
 public class Bison extends Herbivore implements Run, Swim, Voice {
     private String name;
@@ -41,8 +43,11 @@ public class Bison extends Herbivore implements Run, Swim, Voice {
 
     @Override
     public void eat(Food food) {
-        super.eat(food);
-        this.satiety +=food.getEnergy();
+        if(!(food instanceof Grass)){
+            System.out.println("Еда не является травой");
+        }else {
+            this.satiety += food.getEnergy();
+        }
 
     }
 }
